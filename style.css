@@ -1,85 +1,152 @@
 body {
-  font-family: "Poppins", sans-serif;
-  background: #fff5f7;
+  margin: 0;
+  font-family: "Noto Sans Gujarati", sans-serif;
+  background: radial-gradient(#ffdee9, #b5fffc);
+  overflow: hidden;
+  color: #333;
+}
+
+#intro {
+  text-align: center;
+  padding-top: 4vh;
+}
+
+.childhood {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
 }
 
-.container {
-  text-align: center;
-  max-width: 600px;
-}
-
-.photos {
-  margin-bottom: 20px;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-}
-
-.circle {
-  width: 100px;
-  height: 100px;
+.child {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 10px;
-  border: 3px solid #ff9ebc;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
 }
 
-.chat {
+#chat {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
-  opacity: 0;
-  transition: opacity 1s ease;
+  width: 50%;
 }
 
-/* Each speech bubble */
 .bubble {
-  background: #fff;
-  border-radius: 20px;
-  padding: 10px 15px;
+  display: none;
   max-width: 70%;
+  padding: 12px 18px;
+  margin: 6px;
+  border-radius: 18px;
+  font-size: 1rem;
+  line-height: 1.4;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s ease;
 }
 
-/* Left/right alignment */
-.left {
+.bubble.left {
   align-self: flex-start;
-  background-color: #f1f1f1;
+  background: #ffe6ec;
 }
-.right {
+
+.bubble.right {
   align-self: flex-end;
-  background-color: #ffe6eb;
+  background: #d6f5ff;
 }
 
-.ending {
-  opacity: 0;
-  transition: opacity 2s ease;
+.show {
+  display: block;
+  opacity: 1;
+}
+
+#final-message {
+  display: none;
+  font-size: 1.3rem;
   margin-top: 30px;
-  color: #d96f92;
-  font-weight: 500;
+  color: #5a3e85;
+  animation: fadein 2s forwards;
 }
 
-.open-btn {
-  background-color: #ff9ebc;
+#open-btn {
+  display: none;
+  margin-top: 30px;
+  padding: 10px 25px;
+  border: none;
+  background: #ff8ba7;
   color: white;
-  padding: 10px 20px;
+  font-size: 1.1rem;
   border-radius: 25px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  transition: background 0.3s;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.open-btn:hover {
-  background-color: #ff7fa3;
+#open-btn:hover {
+  background: #ff5d84;
 }
 
+.hidden {
+  display: none;
+}
 
+#scene-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+
+#scene-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+  z-index: -1;
+  transition: background-image 1s ease;
+}
+
+#scene-photo {
+  width: 280px;
+  height: 280px;
+  border-radius: 12px;
+  margin-top: 70px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  object-fit: cover;
+}
+
+#scene-message {
+  font-size: 1.2rem;
+  margin: 20px;
+  color: #fff;
+  text-shadow: 1px 1px 4px #000;
+}
+
+#buttons {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+#buttons button {
+  margin: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#buttons button:hover {
+  background: #fff;
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
