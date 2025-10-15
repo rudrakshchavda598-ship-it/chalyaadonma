@@ -1,0 +1,215 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffe5ec, #fff8f0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.chat-area {
+  position: relative;
+  width: 400px;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 🌸 Floating Chat Bubbles */
+.bubble {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  margin: 8px 0;
+  opacity: 0;
+  animation: floatUp 0.8s ease forwards;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.you {
+  background-color: #aee6ff;
+  align-self: flex-start;
+  margin-left: 100px; /* near boy photo */
+  border-bottom-left-radius: 0;
+}
+
+.she {
+  background-color: #ffd6f5;
+  align-self: flex-end;
+  margin-right: 100px; /* near girl photo */
+  border-bottom-right-radius: 0;
+}
+
+/* 🪶 Smooth float animation */
+@keyframes floatUp {
+  from {
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* 💌 Open button */
+.open-btn {
+  background-color: #ff8fab;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.open-btn:hover {
+  background-color: #ff5d8f;
+}
+
+/* 🌼 Scene buttons */
+.next-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* 🌈 Romantic background gradient animation */
+@keyframes dreamyBackground {
+  0% {
+    background: linear-gradient(135deg, #ffe5ec, #fff8f0);
+  }
+  25% {
+    background: linear-gradient(135deg, #ffd1dc, #ffe8cc);
+  }
+  50% {
+    background: linear-gradient(135deg, #ffd6f5, #fff0e1);
+  }
+  75% {
+    background: linear-gradient(135deg, #ffe1ef, #fff2e0);
+  }
+  100% {
+    background: linear-gradient(135deg, #ffe5ec, #fff8f0);
+  }
+}
+
+/* Apply dreamy animation to body */
+body {
+  animation: dreamyBackground 15s ease-in-out infinite;
+  background-size: 400% 400%;
+}
+
+/* 🌸 Styles for love.html */
+.love-page {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ffe5ec, #fff8f0);
+  animation: dreamyBackground 20s ease-in-out infinite;
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #b8005c;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px rgba(255, 160, 180, 0.7);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.buttons button {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.buttons button:hover {
+  background: #ffd1dc;
+  transform: scale(1.1);
+}
+
+.scene {
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.scene img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  animation: fadeIn 1s ease;
+}
+
+.message {
+  font-size: 1.1rem;
+  color: #6b003b;
+  margin-top: 1rem;
+  animation: fadeIn 1.2s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
