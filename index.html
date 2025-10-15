@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="gu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boondikiladoo 💕</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boondikiladoo ❤</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <div class="photo-container">
-      <img src="images/boy.jpg" alt="Boy" class="photo" />
-      <img src="images/girl.jpg" alt="Girl" class="photo" />
-    </div>
+<body class="conversation-page">
+  <main class="conversation-wrap">
+    <section id="conversation" class="conversation">
+      <!-- conversation bubbles (will appear with a small timed animation) -->
+      <div class="msg msg-left"><img class="avatar" src="images/boy.jpg" alt="boy"/><div class="bubble">Hi boondikiladoo mne odkhe che? 💖</div></div>
+      <div class="msg msg-right"><img class="avatar" src="images/girl.jpg" alt="girl"/><div class="bubble">Tu toa mara robin jevo lage che? 😊</div></div>
+      <div class="msg msg-left"><img class="avatar" src="images/boy.jpg" alt="boy"/><div class="bubble">Ha hu taro robin j chu, tu ketli saras lage che.</div></div>
+      <div class="msg msg-right"><img class="avatar" src="images/girl.jpg" alt="girl"/><div class="bubble">Aww, mane pan tu bau yaad aave che.</div></div>
+      <div class="msg msg-left"><img class="avatar" src="images/boy.jpg" alt="boy"/><div class="bubble">Nani hati tyre pan rite yaad avse. 😌</div></div>
 
-    <div id="chatBox" class="chat-box"></div>
-    <button id="openButton" class="open-btn">Open 💖</button>
-  </div>
+      <div id="final-line" class="final-line">ચાલ મારી યાદો માં જોડે તને બતાવુ — હું તને જ છું 💕</div>
+    </section>
 
-  <script src="script.js"></script>
+    <button id="openBtn" class="open-btn">Open 💌</button>
+  </main>
+
+  <!-- background music for conversation -->
+  <audio id="bg-music" src="songs/madhubala.mp3" autoplay loop></audio>
+
+  <script>
+    // small click handler to go to love.html
+    document.getElementById('openBtn').addEventListener('click', () => {
+      window.location.href = 'love.html';
+    });
+
+    // staggered bubble animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const msgs = Array.from(document.querySelectorAll('.msg'));
+      msgs.forEach((m, i) => {
+        setTimeout(() => m.classList.add('visible'), i * 800);
+      });
+      setTimeout(() => document.getElementById('final-line').classList.add('visible'), msgs.length * 800 + 400);
+    });
+  </script>
 </body>
 </html>
