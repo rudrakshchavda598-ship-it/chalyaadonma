@@ -1,36 +1,42 @@
 window.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("bg-music");
   const photos = document.getElementById("photos");
+  const chat = document.getElementById("chat");
   const bubbles = document.querySelectorAll(".bubble");
   const ending = document.getElementById("ending");
 
   // hide all at start
   photos.style.opacity = 0;
+  chat.style.opacity = 0;
   bubbles.forEach((b) => (b.style.opacity = 0));
   ending.style.opacity = 0;
 
-  // When song starts
   audio.addEventListener("play", () => {
-    // 1. show photos
+    // ⿡ show photos
     setTimeout(() => {
       photos.style.opacity = 1;
     }, 500);
 
-    // 2. show bubbles one-by-one (each after ~1.5s)
+    // ⿢ show chat container
+    setTimeout(() => {
+      chat.style.opacity = 1;
+    }, 2000);
+
+    // ⿣ show bubbles one by one
     bubbles.forEach((bubble, index) => {
       setTimeout(() => {
         bubble.style.opacity = 1;
-      }, 2500 + index * 1500); // total ~35s for all
+      }, 2500 + index * 1500); // fade sequentially
     });
 
-    // 3. show ending near end of song (~38s)
+    // ⿤ show ending near end of 40 s
     setTimeout(() => {
       ending.style.opacity = 1;
     }, 38000);
   });
 
-  // safety fallback (if audio fails)
+  // fallback if audio doesn’t autoplay
   setTimeout(() => {
-    ending.style.opacity = 1;
-  }, 40000);
+    if (ending.style.opacity == 0) ending.style.opacity = 1;
+  }, 42000);
 });
