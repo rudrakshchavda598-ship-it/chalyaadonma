@@ -1,23 +1,36 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const bubbles = document.querySelectorAll(".bubble");
-  bubbles.forEach(bubble => bubble.style.display = "none"); // hide all at first
-
   const audio = document.getElementById("bg-music");
-  let index = 0;
+  const photos = document.getElementById("photos");
+  const bubbles = document.querySelectorAll(".bubble");
+  const ending = document.getElementById("ending");
 
-  function showNextBubble() {
-    if (index < bubbles.length) {
-      bubbles[index].style.display = "inline-block";
-      bubbles[index].style.opacity = 0;
-      bubbles[index].style.transition = "opacity 1s ease";
-      setTimeout(() => (bubbles[index].style.opacity = 1), 50);
-      index++;
-      setTimeout(showNextBubble, 4000); // delay before showing next bubble
-    }
-  }
+  // hide all at start
+  photos.style.opacity = 0;
+  bubbles.forEach((b) => (b.style.opacity = 0));
+  ending.style.opacity = 0;
 
-  // Wait for audio to start
+  // When song starts
   audio.addEventListener("play", () => {
-    setTimeout(showNextBubble, 2000);
-  });
+    // 1. show photos
+    setTimeout(() => {
+      photos.style.opacity = 1;
+    }, 500);
+
+    // 2. show bubbles one-by-one (each after ~1.5s)
+    bubbles.forEach((bubble, index) => {
+      setTimeout(() => {
+        bubble.style.opacity = 1;
+      }, 2500 + index * 1500); // total ~35s for all
+    });
+
+    // 3. show ending near end of song (~38s)
+    setTimeout(() => {
+      ending.style.opacity = 1;
+    }, 38000);
+  });
+
+  // safety fallback (if audio fails)
+  setTimeout(() => {
+    ending.style.opacity = 1;
+  }, 40000);
 });
