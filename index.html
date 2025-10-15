@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Boondikiladoo ❤</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chal Yaadon Ma</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="conversation-page">
-  <main class="conversation-wrap">
-    <section id="conversation" class="conversation">
-      <!-- conversation bubbles (will appear with a small timed animation) -->
-      <div class="msg msg-left"><img class="avatar" src="images/boy.jpg" alt="boy"/><div class="bubble">Hi boondikiladoo mne odkhe che? 💖</div></div>
-      <div class="msg msg-right"><img class="avatar" src="images/girl.jpg" alt="girl"/><div class="bubble">Tu toa mara robin jevo lage che? 😊</div></div>
-      <div class="msg msg-left"><img class="avatar" src="images/boy.jpg" alt="boy"/><div class="bubble">Ha hu taro robin j chu, tu ketli saras lage che.</div></div>
-      <div class="msg msg-right"><img class="avatar" src="images/girl.jpg" alt="girl"/><div class="bubble">Aww, mane pan tu bau yaad aave che.</div></div>
-      <div class="msg msg-left"><img class="avatar" src="images/boy.jpg" alt="boy"/><div class="bubble">Nani hati tyre pan rite yaad avse. 😌</div></div>
+<body class="intro">
+  <div class="conversation">
+    <div class="bubble you">
+      Hi boondikiladoo, mne odkhe che?
+    </div>
+    <div class="bubble her">
+      Tu toa mara robin jevo lage che?
+    </div>
+    <div class="bubble you">
+      Ha hu taro robin j chu, tu ketli saras lage che nani hati tyre mne tu bau yaad aave che
+    </div>
+    <div class="bubble her">
+      Evu nathi kai skto ke hu tari lagu chu
+    </div>
+    <div class="bubble you">
+      Pan e to flirting thyi jse ne, hu to Dil thi kau chu
+    </div>
+    <div class="bubble her">
+      Java de tne kehta nthi avadtu
+    </div>
+    <div class="bubble you">
+      Accha janvu che hu aakho divas kemno tari yaado ma khovaye lo hou chu
+    </div>
+  </div>
 
-      <div id="final-line" class="final-line">ચાલ મારી યાદો માં જોડે તને બતાવુ — હું તને જ છું 💕</div>
-    </section>
+  <div class="final-line">
+    ચાલ, મારી યાદોમાં આવી જા… હું તને બતાવું છું કે તું કેવી રીતે મારી દુનિયાને ખીલાાવી દે છે 💖
+  </div>
 
-    <button id="openBtn" class="open-btn">Open 💌</button>
-  </main>
+  <button id="openButton">Open</button>
 
-  <!-- background music for conversation -->
-  <audio id="bg-music" src="songs/madhubala.mp3" autoplay loop></audio>
+  <audio id="bgMusic" src="songs/madhubala.mp3" autoplay loop></audio>
 
-  <script>
-    // small click handler to go to love.html
-    document.getElementById('openBtn').addEventListener('click', () => {
-      window.location.href = 'love.html';
-    });
-
-    // staggered bubble animations
-    document.addEventListener('DOMContentLoaded', () => {
-      const msgs = Array.from(document.querySelectorAll('.msg'));
-      msgs.forEach((m, i) => {
-        setTimeout(() => m.classList.add('visible'), i * 800);
-      });
-      setTimeout(() => document.getElementById('final-line').classList.add('visible'), msgs.length * 800 + 400);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-
