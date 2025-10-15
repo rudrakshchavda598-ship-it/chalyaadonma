@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="gu">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,54 +7,78 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="intro">
-    <div class="chat">
-      <div class="message left">
-        <img src="images/boy.jpg" alt="Boy">
-        <p>hi boondikiladoo mne odkhe che?</p>
-      </div>
-      <div class="message right">
-        <img src="images/girl.jpg" alt="Girl">
-        <p>tu toa mara robin jevo lage che?</p>
-      </div>
-      <div class="message left">
-        <img src="images/boy.jpg" alt="Boy">
-        <p>ha hu taro robin j chu tu ketli saras lage che, nanni hati tyre mne tu bau yaad ave che 🥺</p>
-      </div>
-      <div class="message right">
-        <img src="images/girl.jpg" alt="Girl">
-        <p>evu nathi kai skto ke hu tari lagu chu 😚</p>
-      </div>
-      <div class="message left">
-        <img src="images/boy.jpg" alt="Boy">
-        <p>pan e to flirting thayi jse ne hu to dil thi kau chu 💌</p>
-      </div>
-      <div class="message right">
-        <img src="images/girl.jpg" alt="Girl">
-        <p>java de tne kehta nthi avdtu 😄</p>
-      </div>
-      <div class="message left">
-        <img src="images/boy.jpg" alt="Boy">
-        <p>acha janvu che hu aakho divas kemno tari yaado ma khovayelo hou chu 💖</p>
-      </div>
+  <!-- Background Music -->
+  <audio id="introMusic" src="songs/madhubala.mp3" preload="auto"></audio>
+
+  <div class="chat" id="chatBox">
+    <div class="message left">
+      <img src="images/boy.jpg" alt="boy" />
+      <p>hi boondikiladoo mne odkhe che? 😊</p>
     </div>
-    <button id="openBtn" class="hidden">open 💞</button>
-  </div>
-
-  <audio id="bgMusic" src="madhubala.mp3" autoplay></audio>
-
-  <div id="main" class="hidden">
-    <img id="sceneImage" src="" alt="scene">
-    <p id="sceneText"></p>
-    <div id="buttons">
-      <button data-scene="phooldi">Phooldi 🌸</button>
-      <button data-scene="chandali">Chandali 🌙</button>
-      <button data-scene="golu">Golu 🧸</button>
-      <button data-scene="diludi">Diludi 💕</button>
-      <button data-scene="boondkiladoo">Boondkiladoo 🍯</button>
+    <div class="message right">
+      <img src="images/girl.jpg" alt="girl" />
+      <p>tu toa mara robin jevo lage che? 😅</p>
+    </div>
+    <div class="message left">
+      <img src="images/boy.jpg" alt="boy" />
+      <p>ha hu taro robin j chu tu ketli saras lage che nanni hati tyre mne tu bau yaad ave che 🥺</p>
+    </div>
+    <div class="message right">
+      <img src="images/girl.jpg" alt="girl" />
+      <p>evu nathi kai skto ke hu tari lagu chu 😳</p>
+    </div>
+    <div class="message left">
+      <img src="images/boy.jpg" alt="boy" />
+      <p>pan e to flirting thayi jse ne hu to dil thi kau chu ❤</p>
+    </div>
+    <div class="message right">
+      <img src="images/girl.jpg" alt="girl" />
+      <p>java de tne kehta nthi avadtu 😌</p>
+    </div>
+    <div class="message left">
+      <img src="images/boy.jpg" alt="boy" />
+      <p>accha janvu che hu aakho divas kemno tari yaado ma khovayelo hou chu 💗</p>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Hidden Open Button -->
+  <button id="openBtn" class="hidden">💞 Open 💞</button>
+
+  <script>
+    const messages = document.querySelectorAll('.message');
+    const openBtn = document.getElementById('openBtn');
+    const introMusic = document.getElementById('introMusic');
+
+    // Play background music when page loads
+    window.addEventListener('load', () => {
+      introMusic.play().catch(() => {
+        console.log("Autoplay blocked — user must interact first.");
+      });
+      introMusic.volume = 0.4;
+
+      // Stop song after 40 seconds
+      setTimeout(() => introMusic.pause(), 40000);
+    });
+
+    // Fade messages one by one
+    messages.forEach((msg, i) => {
+      msg.style.opacity = 0;
+      setTimeout(() => {
+        msg.style.opacity = 1;
+        msg.style.transition = 'opacity 0.8s ease-in';
+      }, i * 1500);
+    });
+
+    // Show open button after all chats fade in
+    setTimeout(() => {
+      openBtn.classList.remove('hidden');
+      openBtn.style.animation = "fadeIn 1s ease-in-out forwards";
+    }, messages.length * 1500 + 1000);
+
+    // Go to next page
+    openBtn.addEventListener('click', () => {
+      window.location.href = "main.html";
+    });
+  </script>
 </body>
 </html>
