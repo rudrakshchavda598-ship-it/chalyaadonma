@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chal Yaadon Ma</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chalyaadon Ma 💞</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="intro">
-    <div class="childhood">
-      <img src="images/boy.jpg" class="child" id="boy" alt="boy" />
-      <div id="chat">
-        <div class="bubble left">Hi Boondikiladoo mne odkhe che?</div>
-        <div class="bubble right">Tu toa mara Robin jevo lage che?</div>
-        <div class="bubble left">Ha hu taro Robin chu... tu ketli saras lage che!</div>
-        <div class="bubble right">Evu nathi kai sktu ke hu tari lagu chu.</div>
-        <div class="bubble left">Pan e flirting nathi, hu to dil thi kahu chu!</div>
-        <div class="bubble right">Java de tne, kehta nathi avdtu!</div>
-        <div class="bubble left">Accha janvu che hu aakho divas tari yaad ma khovayelo chu 💭</div>
-      </div>
-      <img src="images/her.jpg" class="child" id="her" alt="her" />
+  <div class="intro" id="intro">
+    <div class="conversation" id="conversation">
+      <div class="message left"><img src="images/boy.jpg"><p>hi boondikiladoo mne odkhe che?</p></div>
+      <div class="message right"><img src="images/her.jpg"><p>tu toa mara robin jevo lage che?</p></div>
+      <div class="message left"><img src="images/boy.jpg"><p>ha hu taro robin j chu tu ketli saras lage che nani hati tyre mne tu bau yaad aave che</p></div>
+      <div class="message right"><img src="images/her.jpg"><p>evu nathi kai skto ke hu tari lagu chu</p></div>
+      <div class="message left"><img src="images/boy.jpg"><p>pan e to flirting thyi jse ne hu to Dil thi kau chu</p></div>
+      <div class="message right"><img src="images/her.jpg"><p>java de tne kehta nthi avadtu</p></div>
+      <div class="message left"><img src="images/boy.jpg"><p>accha janvu che hu aakho divas kemno tari yaado ma khovaye lo hou chu</p></div>
+      <div class="final-line"><p>ચલ મારી યાદો માં જોડે તને બતવુ બધે તુ જ છે 💖</p></div>
     </div>
-
-    <div id="final-message">ચાલ મારી યાદોમાં જોડે તને બતાવું, બધે તું જ છે…</div>
-    <button id="open-btn">Open</button>
-    <audio id="intro-audio" src="songs/madhubala.mp3"></audio>
+    <button id="openBtn" class="hidden">Open 💖</button>
   </div>
 
-  <div id="scene-container" class="hidden">
-    <div id="scene-bg"></div>
-    <div id="scene-content">
-      <img id="scene-photo" src="" alt="scene" />
-      <p id="scene-message"></p>
-      <audio id="scene-audio"></audio>
-      <div id="buttons">
-        <button data-scene="0">Phooldi</button>
-        <button data-scene="1">Chandali</button>
-        <button data-scene="2">Golu</button>
-        <button data-scene="3">Diludi</button>
-        <button data-scene="4">Boondikiladoo</button>
-      </div>
+  <div class="main hidden" id="main">
+    <img id="scene" src="" alt="scene">
+    <p id="gujjuText"></p>
+    <div class="buttons">
+      <button onclick="showScene('Phooldi')">ફૂલડી</button>
+      <button onclick="showScene('Chandali')">ચાંદલી</button>
+      <button onclick="showScene('Golu')">ગોળુ</button>
+      <button onclick="showScene('Diludi')">દિલુડી</button>
+      <button onclick="showScene('Boondkiladoo')">બૂંદકિલાડૂ</button>
     </div>
   </div>
 
+  <audio id="bgMusic" src="songs/madhubala.mp3"></audio>
   <script src="script.js"></script>
 </body>
 </html>
