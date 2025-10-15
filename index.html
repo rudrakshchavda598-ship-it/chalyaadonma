@@ -1,71 +1,42 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boondikiladoo 💕</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="songs/madhubala.mp3" type="audio/mpeg">
-  </audio>
-
   <div class="container">
-    <div class="conversation">
-
-      <div class="message-row">
-        <img src="images/boy.jpg" class="avatar left">
-        <div class="bubble you">Hi boondikiladoo, mne odkhe che?</div>
-      </div>
-
-      <div class="message-row right">
-        <div class="bubble her">Tu toa mara robin jevo lage che?</div>
-        <img src="images/girl.jpg" class="avatar right">
-      </div>
-
-      <div class="message-row">
-        <img src="images/boy.jpg" class="avatar left">
-        <div class="bubble you">
-          Ha hu taro robin j chu, tu ketli saras lage che nani hati tyre mne tu bau yaad aave che 💫
-        </div>
-      </div>
-
-      <div class="message-row right">
-        <div class="bubble her">
-          Evu nathi kai skto ke hu tari lagu chu 😳
-        </div>
-        <img src="images/girl.jpg" class="avatar right">
-      </div>
-
-      <div class="message-row">
-        <img src="images/boy.jpg" class="avatar left">
-        <div class="bubble you">
-          Pan e to flirting thyi jse ne, hu to dil thi kau chu 💗
-        </div>
-      </div>
-
-      <div class="message-row right">
-        <div class="bubble her">
-          Java de tne kehta nathi avadtu 😌
-        </div>
-        <img src="images/girl.jpg" class="avatar right">
-      </div>
-
-      <div class="message-row">
-        <img src="images/boy.jpg" class="avatar left">
-        <div class="bubble you">
-          Accha janvu che, hu aakho divas kemno tari yaado ma khovaye lo hou chu 🌙
-        </div>
-      </div>
-
+    <!-- photos -->
+    <div class="photos">
+      <img src="images/boy.jpg" alt="boy" class="circle" />
+      <img src="images/girl.jpg" alt="girl" class="circle" />
     </div>
 
-    <p class="end-text">
-      ચાલ, મારી વાતોમાં આવી જા... <br>
-      હું તને બતાવું છું કે તું કેવી રીતે મારી દુનિયામાં ખીલી ઉઠી છે 💕<br><br>
-      <button onclick="window.location.href='love.html'" class="open-btn">Open 💖</button>
+    <!-- conversation bubbles -->
+    <div class="chat">
+      <div class="bubble left">Hi boondikiladoo, mne odkhe che?</div>
+      <div class="bubble right">Tu to mara robin jevo lage che?</div>
+      <div class="bubble left">Ha hu taro robin j chu, tu ketli saras lage che nani hati tyaare mne to bau yaad aave che.</div>
+      <div class="bubble right">Evu nathi kai sktu ke hu tari lagu chu.</div>
+      <div class="bubble left">Pan e to flirting thayi jse ne, hu to dil thi kau chu.</div>
+      <div class="bubble right">Java de ne kehta nathi avdtu.</div>
+      <div class="bubble left">Accha janu che hu aakho divas kemno tari yaado ma khovaye lo hou chu.</div>
+    </div>
+
+    <!-- Gujarati line -->
+    <p class="ending">
+      ચા, મારી ચાહતમાં આવી જા... હવે તને બતાવું છું કે તું કેવી રીતે મારી દુનિયાને ખિલાવી દે છે 💞
     </p>
+
+    <!-- open button -->
+    <a href="love.html" class="open-btn">Open 💖</a>
   </div>
+
+  <!-- Background song -->
+  <audio autoplay loop>
+    <source src="songs/madhubala.mp3" type="audio/mpeg" />
+  </audio>
 </body>
 </html>
