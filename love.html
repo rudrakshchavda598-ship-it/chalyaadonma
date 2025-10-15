@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="gu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seasons of Love 💕</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Memories</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <h1>Boondikiladoo's Seasons of Love 🌸</h1>
+<body class="love-page">
+  <header class="top">
+    <h2>Seasons of Love</h2>
+  </header>
 
-  <div class="buttons">
-    <button>Pehla Nasha</button>
-    <button>Jag Ghoomeya</button>
-    <button>Caller Tune</button>
-    <button>Chaand Ne Kaho</button>
-    <button>Mann Mori Gayu</button>
-  </div>
+  <nav class="choices">
+    <button onclick="showMemory(0)">Memory 1</button>
+    <button onclick="showMemory(1)">Memory 2</button>
+    <button onclick="showMemory(2)">Memory 3</button>
+    <button onclick="showMemory(3)">Memory 4</button>
+    <button onclick="showMemory(4)">Memory 5</button>
+  </nav>
+
+  <main class="memory-display" id="memory-display">
+    <img id="memory-photo" src="images/caller.jpg" alt="memory photo" />
+    <div id="memory-text" class="memory-text">હવે આગળના મેમોરી માટે બટન ક્લિક કરો</div>
+    <audio id="memory-audio" controls></audio>
+  </main>
 
   <script src="script.js"></script>
 </body>
