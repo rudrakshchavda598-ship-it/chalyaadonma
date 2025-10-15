@@ -29,7 +29,7 @@ function playConversation() {
   setTimeout(() => {
     openBtn.classList.remove("hidden");
     bgMusic.pause();
-  }, 20000);
+  }, 40000);
 }
 
 playConversation();
@@ -57,4 +57,5 @@ function showScene(name) {
   currentAudio = new Audio(s.song);
   currentAudio.play();
 }
+
 
