@@ -1,81 +1,59 @@
-window.onload = () => {
-  const audio = document.getElementById("intro-audio");
-  const bubbles = document.querySelectorAll(".bubble");
-  const finalMsg = document.getElementById("final-message");
-  const openBtn = document.getElementById("open-btn");
-  const intro = document.getElementById("intro");
-  const sceneContainer = document.getElementById("scene-container");
+const bgMusic = document.getElementById("bgMusic");
+const intro = document.getElementById("intro");
+const main = document.getElementById("main");
+const scene = document.getElementById("scene");
+const gujjuText = document.getElementById("gujjuText");
+const openBtn = document.getElementById("openBtn");
+const messages = document.querySelectorAll(".message");
+const finalLine = document.querySelector(".final-line");
 
-  // start song automatically
-  audio.play().catch(() => console.log("Autoplay may be blocked"));
+let currentAudio = null;
 
-  // bubble timing
-  bubbles.forEach((b, i) => {
-    setTimeout(() => b.classList.add("show"), i * 4000);
+// Conversation animation timing
+function playConversation() {
+  bgMusic.play();
+  bgMusic.volume = 0.6;
+
+  messages.forEach((msg, index) => {
+    setTimeout(() => {
+      msg.style.opacity = "1";
+    }, index * 4000);
   });
 
-  // after last bubble
+  // After all messages
   setTimeout(() => {
-    finalMsg.style.display = "block";
-  }, bubbles.length * 4000 + 1000);
+    finalLine.style.opacity = "1";
+  }, messages.length * 4000 + 1500);
 
-  // show open button
+  // Show open button at end
   setTimeout(() => {
-    openBtn.style.display = "inline-block";
-  }, bubbles.length * 4000 + 6000);
+    openBtn.classList.remove("hidden");
+    bgMusic.pause();
+  }, 40000);
+}
 
-  // scenes
-  const scenes = [
-    {
-      bg: "linear-gradient(to bottom right, #ffdde1, #ee9ca7)",
-      img: "images/mannmohi.jpg",
-      msg: "તું હસે ત્યારે દુનિયા રોકાય જાય છે 💖",
-      song: "songs/mannmohi.mp3",
-    },
-    {
-      bg: "linear-gradient(to bottom right, #2b5876, #4e4376)",
-      img: "images/chaandne.jpg",
-      msg: "ચાંદની રાતમાં તારી યાદોનો વરસાદ ☁",
-      song: "songs/chaandne.mp3",
-    },
-    {
-      bg: "linear-gradient(to bottom right, #ffecd2, #fcb69f)",
-      img: "images/callertune.jpg",
-      msg: "તારું નામ સાંભળું એટલે દિલ ધબકવા લાગે 🎵",
-      song: "songs/callertune.mp3",
-    },
-    {
-      bg: "linear-gradient(to bottom right, #667db6, #0082c8, #0082c8, #667db6)",
-      img: "images/jaggume.jpg",
-      msg: "વરસાદની બુંદોમાં તું જ પ્રતિબિંબ છે 💧",
-      song: "songs/jaggume.mp3",
-    },
-    {
-      bg: "linear-gradient(to bottom right, #c6ffdd, #fbd786, #f7797d)",
-      img: "images/pehlanasha.jpg",
-      msg: "પ્રથમ પ્રેમ જેવો લાગણીનો સ્પર્શ 💞",
-      song: "songs/pehlanasha.mp3",
-    },
-  ];
+playConversation();
 
-  const scenePhoto = document.getElementById("scene-photo");
-  const sceneMsg = document.getElementById("scene-message");
-  const sceneBg = document.getElementById("scene-bg");
-  const sceneAudio = document.getElementById("scene-audio");
+openBtn.addEventListener("click", () => {
+  intro.classList.add("hidden");
+  main.classList.remove("hidden");
+});
 
-  document.querySelectorAll("#buttons button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const sc = scenes[btn.dataset.scene];
-      sceneBg.style.backgroundImage = sc.bg;
-      scenePhoto.src = sc.img;
-      sceneMsg.textContent = sc.msg;
-      sceneAudio.src = sc.song;
-      sceneAudio.play();
-    });
-  });
-
-  openBtn.onclick = () => {
-    intro.classList.add("hidden");
-    sceneContainer.classList.remove("hidden");
-  };
+// Button scenes
+const scenes = {
+  Phooldi: { img: "images/mann.jpg", song: "songs/mann.mp3", text: "તું હસે ત્યાં દુનિયા હસે જાય છે 💖" },
+  Chandali: { img: "images/chaand.jpg", song: "songs/chaand.mp3", text: "ચાંદની રાતમાં તારી યાદોનો વરસાદ ☁" },
+  Golu: { img: "images/caller.jpg", song: "songs/caller.mp3", text: "તારા નામ સાંભળું એજ હૃદય ધબકતા વાગે 🎵" },
+  Diludi: { img: "images/jag.jpg", song: "songs/jag.mp3", text: "એ આંખો યે તો દિલની ભાષા કહે છે 💧" },
+  Boondkiladoo: { img: "images/pehla.jpg", song: "songs/pehla.mp3", text: "પહેલો પ્રેમ એટલે તારી યાદની સુગંધ 💋" }
 };
+
+function showScene(name) {
+  const s = scenes[name];
+  if (!s) return;
+  scene.src = s.img;
+  gujjuText.textContent = s.text;
+  if (currentAudio) currentAudio.pause();
+  currentAudio = new Audio(s.song);
+  currentAudio.play();
+}
