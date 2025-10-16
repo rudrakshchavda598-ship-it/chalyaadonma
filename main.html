@@ -86,67 +86,69 @@
     <img id="image" src="" alt="Memory Image">
     <audio id="song" controls></audio>
   </div>
+<script>
+  
+  const image = document.getElementById("image");
+  const song = document.getElementById("song");
+  const mainText = document.getElementById("mainText");
 
-  <script>
-    const image = document.getElementById("image");
-    const song = document.getElementById("song");
-    const mainText = document.getElementById("mainText");
+  const scenes = {
+    phooldi: {
+      img: "images/mann.jpg",
+      song: "songs/mann.mp3",
+      text: "💐 ફૂલડી, તું મારી શાંતિ છે 💕",
+      start: 15
+    },
+    chandali: {
+      img: "images/chaand.jpg",
+      song: "songs/chaand.mp3",
+      text: "🌙 ચાંદળી, તું મારી રાતોનું ચાંદ છે 💖",
+      start: 25
+    },
+    golu: {
+      img: "images/caller.jpg",
+      song: "songs/caller.mp3",
+      text: "📞 ગોળુ, તારી અવાજે દિલ ધડકે છે 💞",
+      start: 20
+    },
+    diludi: {
+      img: "images/jag.jpg",
+      song: "songs/jag.mp3",
+      text: "💫 દિલુડી, તું મારી સપનાઓની જગ છે 💘",
+      start: 30
+    },
+    boondkiladoo: {
+      img: "images/pehla.jpg",
+      song: "songs/pehla.mp3",
+      text: "🍬 બૂંદકિલાડુ, તું મારી યાદોમાં ઘૂમતી મીઠાશ છે 💓",
+      start: 18
+    }
+  };
 
-    const scenes = {
-      phooldi: {
-        img: "images/phooldi_mann.jpg",
-        song: "songs/mann.mp3",
-        text: "💐 ફૂલડી, તું મારી શાંતિ છે 💕",
-        start: 15
-      },
-      chandali: {
-        img: "images/chandali_chaand.jpg",
-        song: "songs/chaand.mp3",
-        text: "🌙 ચાંદળી, તું મારી રાતોનું ચાંદ છે 💖",
-        start: 25
-      },
-      golu: {
-        img: "images/golu_caller.jpg",
-        song: "songs/caller.mp3",
-        text: "📞 ગોળુ, તારી અવાજે દિલ ધડકે છે 💞",
-        start: 20
-      },
-      diludi: {
-        img: "images/diludi_jag.jpg",
-        song: "songs/jag.mp3",
-        text: "💫 દિલુડી, તું મારી સપનાઓની જગ છે 💘",
-        start: 30
-      },
-      boondkiladoo: {
-        img: "images/boondkiladoo_pehla.jpg",
-        song: "songs/pehla.mp3",
-        text: "🍬 બૂંદકિલાડુ, તું મારી યાદોમાં ઘૂમતી મીઠાશ છે 💓",
-        start: 18
-      }
+  function showContent(name) {
+    const scene = scenes[name];
+
+    // Update text and image
+    mainText.textContent = scene.text;
+    image.classList.remove("visible");
+    image.src = scene.img;
+
+    // Wait for image to load, then fade in
+    image.onload = () => {
+      image.classList.add("visible");
     };
 
-    function showContent(name) {
-      const scene = scenes[name];
-
-      // Update text and image
-      mainText.textContent = scene.text;
-      image.classList.remove("visible");
-      image.src = scene.img;
-
-      // Play audio from timestamp
-      song.src = scene.song;
-      song.currentTime = scene.start;
+    // Play audio from timestamp (wait a tiny bit for it to load)
+    song.src = scene.song;
+    song.addEventListener("loadedmetadata", () => {
+      song.currentTime = scene.start || 0;
       song.play();
+    }, { once: true });
 
-      // Fade-in image
-      setTimeout(() => image.classList.add("visible"), 200);
-
-      // Stop after 40 seconds
-      clearTimeout(window.stopMusic);
-      window.stopMusic = setTimeout(() => {
-        song.pause();
-      }, 40000);
-    }
-  </script>
-</body>
-</html>
+    // Stop after 40 seconds
+    clearTimeout(window.stopMusic);
+    window.stopMusic = setTimeout(() => {
+      song.pause();
+    }, 60000);
+  }
+</script>
