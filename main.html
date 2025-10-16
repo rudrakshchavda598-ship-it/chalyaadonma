@@ -1,106 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="gu">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chalyaadonma 💖</title>
+  <title>💞 તુ છે એજ મારો દુનિયા છે 💞</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #fdf0e7;
+      background-color: #fff5f8;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      transition: background 1s ease;
-      overflow: hidden;
+      color: #e75480;
+      margin: 0;
+      padding: 0;
     }
 
-    #scene {
-      width: 100%;
-      height: 80vh;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-      transition: background 1s ease, color 1s ease;
+    h2 {
+      margin-top: 80px;
+      font-size: 1.6rem;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .buttons {
-      position: absolute;
-      bottom: 30px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
+      margin-top: 40px;
     }
 
     button {
-      padding: 10px 18px;
+      background-color: #ffd6e8;
       border: none;
       border-radius: 25px;
-      background-color: #fff5f2;
-      font-weight: 600;
+      padding: 10px 20px;
+      margin: 8px;
+      font-size: 1rem;
+      color: #d63384;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
     button:hover {
-      background-color: #ffe0e0;
-      transform: scale(1.05);
+      background-color: #ffb6c1;
+    }
+
+    #content {
+      margin-top: 25px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    #image {
+      max-width: 70%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+      margin-top: 20px;
+    }
+
+    #image.visible {
+      opacity: 1;
+    }
+
+    audio {
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <div id="scene">💖 તું હસે છે એજ મારો તહેવાર છે 💖</div>
+  <h2 id="mainText">💖 તુ છે એજ મારો દુનિયા છે 💖</h2>
 
   <div class="buttons">
-  <button onclick="showContent('phooldi')">Phooldi</button>
-  <button onclick="showContent('chandali')">Chandali</button>
-  <button onclick="showContent('golu')">Golu</button>
-  <button onclick="showContent('diludi')">Diludi</button>
-  <button onclick="showContent('boondkiladoo')">Boondkiladoo</button>
-</div>
+    <button onclick="showContent('phooldi')">Phooldi</button>
+    <button onclick="showContent('chandali')">Chandali</button>
+    <button onclick="showContent('golu')">Golu</button>
+    <button onclick="showContent('diludi')">Diludi</button>
+    <button onclick="showContent('boondkiladoo')">Boondkiladoo</button>
+  </div>
 
-<div id="content">
-  <img id="image" src="" alt="Memory Image">
-  <audio id="song" controls></audio>
-</div>
+  <div id="content">
+    <img id="image" src="" alt="Memory Image">
+    <audio id="song" controls></audio>
+  </div>
 
-<script>
-function showContent(name) {
-  const image = document.getElementById("image");
-  const song = document.getElementById("song");
+  <script>
+    const image = document.getElementById("image");
+    const song = document.getElementById("song");
+    const mainText = document.getElementById("mainText");
 
-  const images = {
-    phooldi: "images/phooldi_mann.jpg",
-    chandali: "images/chandali_chaand.jpg",
-    golu: "images/golu_caller.jpg",
-    diludi: "images/diludi_jag.jpg",
-    boondkiladoo: "images/boondkiladoo_pehla.jpg"
-  };
+    const scenes = {
+      phooldi: {
+        img: "images/phooldi_mann.jpg",
+        song: "songs/mann.mp3",
+        text: "💐 ફૂલડી, તું મારી શાંતિ છે 💕",
+        start: 15
+      },
+      chandali: {
+        img: "images/chandali_chaand.jpg",
+        song: "songs/chaand.mp3",
+        text: "🌙 ચાંદળી, તું મારી રાતોનું ચાંદ છે 💖",
+        start: 25
+      },
+      golu: {
+        img: "images/golu_caller.jpg",
+        song: "songs/caller.mp3",
+        text: "📞 ગોળુ, તારી અવાજે દિલ ધડકે છે 💞",
+        start: 20
+      },
+      diludi: {
+        img: "images/diludi_jag.jpg",
+        song: "songs/jag.mp3",
+        text: "💫 દિલુડી, તું મારી સપનાઓની જગ છે 💘",
+        start: 30
+      },
+      boondkiladoo: {
+        img: "images/boondkiladoo_pehla.jpg",
+        song: "songs/pehla.mp3",
+        text: "🍬 બૂંદકિલાડુ, તું મારી યાદોમાં ઘૂમતી મીઠાશ છે 💓",
+        start: 18
+      }
+    };
 
-  const songs = {
-    phooldi: "songs/mann.mp3",
-    chandali: "songs/chaand.mp3",
-    golu: "songs/caller.mp3",
-    diludi: "songs/jag.mp3",
-    boondkiladoo: "songs/pehla.mp3"
-  };
+    function showContent(name) {
+      const scene = scenes[name];
 
-  image.src = images[name];
-  song.src = songs[name];
-  song.play();
-}
-</script>
+      // Update text and image
+      mainText.textContent = scene.text;
+      image.classList.remove("visible");
+      image.src = scene.img;
 
-    // Start with Phooldi by default
-    window.onload = () => changeScene('phooldi');
+      // Play audio from timestamp
+      song.src = scene.song;
+      song.currentTime = scene.start;
+      song.play();
+
+      // Fade-in image
+      setTimeout(() => image.classList.add("visible"), 200);
+
+      // Stop after 40 seconds
+      clearTimeout(window.stopMusic);
+      window.stopMusic = setTimeout(() => {
+        song.pause();
+      }, 40000);
+    }
   </script>
 </body>
 </html>
