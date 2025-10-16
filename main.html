@@ -60,55 +60,44 @@
   <div id="scene">💖 તું હસે છે એજ મારો તહેવાર છે 💖</div>
 
   <div class="buttons">
-    <button onclick="changeScene('phooldi')">Phooldi</button>
-    <button onclick="changeScene('chandali')">Chandali</button>
-    <button onclick="changeScene('golu')">Golu</button>
-    <button onclick="changeScene('diludi')">Diludi</button>
-    <button onclick="changeScene('boondkiladoo')">Boondkiladoo</button>
-  </div>
+  <button onclick="showContent('phooldi')">Phooldi</button>
+  <button onclick="showContent('chandali')">Chandali</button>
+  <button onclick="showContent('golu')">Golu</button>
+  <button onclick="showContent('diludi')">Diludi</button>
+  <button onclick="showContent('boondkiladoo')">Boondkiladoo</button>
+</div>
 
-  <audio id="bgMusic" autoplay loop></audio>
+<div id="content">
+  <img id="image" src="" alt="Memory Image">
+  <audio id="song" controls></audio>
+</div>
 
-  <script>
-    const music = document.getElementById("bgMusic");
-    const scene = document.getElementById("scene");
+<script>
+function showContent(name) {
+  const image = document.getElementById("image");
+  const song = document.getElementById("song");
 
-    const data = {
-      phooldi: { 
-        img: "mann.jpg", 
-        song: "mann.mp3", 
-        text: "તું હસે છે એજ મારો તહેવાર છે 💖" 
-      },
-      chandali: { 
-        img: "chaand.jpg", 
-        song: "chaand.mp3", 
-        text: "ચાંદની રાતમા તારી યાદોની વરસાત ☁" 
-      },
-      golu: { 
-        img: "caller.jpg", 
-        song: "caller.mp3", 
-        text: "તારું નામ સાંભળું એજ દિન મધુર બની જાય 🎵" 
-      },
-      diludi: { 
-        img: "jag.jpg", 
-        song: "jag.mp3", 
-        text: "એ પળો જ એ પળો યાદ આવશે 💧" 
-      },
-      boondkiladoo: { 
-        img: "pehla.jpg", 
-        song: "pehla.mp3", 
-        text: "પ્રેમ એજ જીવનનો રંગ છે 💕" 
-      },
-    };
+  const images = {
+    phooldi: "images/phooldi_mann.jpg",
+    chandali: "images/chandali_chaand.jpg",
+    golu: "images/golu_caller.jpg",
+    diludi: "images/diludi_jag.jpg",
+    boondkiladoo: "images/boondkiladoo_pehla.jpg"
+  };
 
-    function changeScene(name) {
-      const item = data[name];
-      if (!item) return;
-      scene.style.backgroundImage = url('${item.img}');
-      scene.innerHTML = item.text;
-      music.src = item.song;
-      music.play();
-    }
+  const songs = {
+    phooldi: "songs/mann.mp3",
+    chandali: "songs/chaand.mp3",
+    golu: "songs/caller.mp3",
+    diludi: "songs/jag.mp3",
+    boondkiladoo: "songs/pehla.mp3"
+  };
+
+  image.src = images[name];
+  song.src = songs[name];
+  song.play();
+}
+</script>
 
     // Start with Phooldi by default
     window.onload = () => changeScene('phooldi');
